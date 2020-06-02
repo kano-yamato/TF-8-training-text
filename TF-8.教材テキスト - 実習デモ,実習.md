@@ -122,10 +122,23 @@
 - ニュースリストコンポーネント
   - ニュース記事ページ一覧を表示するコンポーネント
 
+### 実習の手順
+1. 各コンポーネントに置かれている{コンポーネント名}.html という名前のファイルをCRXDEで開く
+2. 手順1で開いたhtmlファイルは不完全な状態になっているので、HTL部分を自分で埋める
+3. 予め用意されたそのコンポーネントが配置されたページを開き、表示を確認する
+4. 確認して表示に問題が無ければ終了、そうでなければ自分で埋めたHTL部分を編集する
+
 ## 実習 - ヒーロー画像(トップ)
 ### ヒーロー画像とは
 トップページを開いたときに表示されている画像
 ![ヒーロー画像](./training-heroimage.png)
+
+### コンポーネント、確認用ページの場所
+
+| 内容 | 場所 |
+|:-|:-|
+|コンポーネント|/apps/yamato/components/content/heroimage|
+|確認用ページ|/content/yamato/jp/ja/hero-image-tutorial|
 
 ### 実装する箇所
 ![ヒーロー画像詳細](./training-heroimage-detail.png)
@@ -137,9 +150,11 @@
 |③|キャプション|タイトルに補足する説明|contentsText|
 |④|ボタンラベル|リンク先の紹介|buttonLabel|
 |⑤|リンク先URL|ボタンのリンク先URL|url|
+|⑥| 表示条件 |ヒーロー画像が空かどうか|empty|
 
 ### 要件
-- 変数hasContentがtrueの場合のみdiv.home-hero要素配下を表示する
+- ヒーロー画像が入力されていない空の場合、div.home-hero配下は表示しない
+- キャプション、テキストに関してはHTMLタグを含んだ表示を可とする
 
 ### 出力したいHTML
 
@@ -172,7 +187,8 @@
       <div class="home-hero-item-contents">
         <div class="home-hero-item-contents-inner">
           <p class="home-hero-item-contents-title">
-            企業が必要とする<br>ソリューションを提供
+            企業が必要とする<br>
+            ソリューションを提供
           </p>
           <div class="home-hero-item-contents-text">
             <p>
@@ -191,7 +207,8 @@
       <div class="home-hero-item-contents">
         <div class="home-hero-item-contents-inner">
           <p class="home-hero-item-contents-title">
-            目指すは、<br>仕事に感動を与える会社
+            目指すは、<br>
+            仕事に感動を与える会社
           </p>
           <div class="home-hero-item-contents-text">
             <p>
@@ -214,6 +231,13 @@
 - 問い合わせ画面で選択可能な入力欄
 - チェックボックス、ラジオボタン、ドロップダウンから選択可能
 ![フォームオプション](./training-formoption.png)
+
+### コンポーネント、確認用ページの場所
+
+| 内容 | 場所 |
+|:-|:-|
+|コンポーネント|/apps/yamato/components/form/options|
+|確認用ページ|/content/yamato/jp/ja/contact|
 
 ### 実装する箇所
 ![フォームオプション-チェックボックス詳細](./training-formoption_checkbox-detail.png)
@@ -306,6 +330,13 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 - ダイアログで入力したルートパス配下のニュースページを全て取得してリスト表示するコンポーネント
 - 1ページに表示する件数は10件
 ![ニュースリスト](./training-newslist.png)
+
+### コンポーネント、確認用ページの場所
+
+| 内容 | 場所 |
+|:-|:-|
+|コンポーネント|/apps/yamato/components/structure/newslist|
+|確認用ページ|/content/yamato/jp/ja/news|
 
 ### 実装する箇所
 ![ニュースリスト詳細](./training-newslist-detail.png)
