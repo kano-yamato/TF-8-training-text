@@ -576,7 +576,7 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 ##### ページャリンク
 |#|内容|意味|HTLでの呼び出し方|
 |:-|:-|:-|:-|
-|①| ページャリンクのリスト |各ページャオブジェクトを格納したリスト|pagerLinks|
+|①| ページャリンクのリスト |各ページャオブジェクトを格納したリスト(以下全ては、pagerLinks内に格納されているオブジェクトが持つ変数)|pagerLinks|
 |②| 現在位置のページ番号に付与されるクラス ||currentClass|
 |③| タグ | 現在位置にはリンク先を設定しないのでspanタグ、それ以外はaタグとする | tag |
 |④| その他の属性 | 属性の名前をkey、値をvalueとしたMap | attribute|
