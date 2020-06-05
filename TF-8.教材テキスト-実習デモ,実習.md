@@ -502,6 +502,7 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 |  |  |  |columnsAttr|
 
 #### 記事一覧
+- Javaクラス: com.adobe.aem.guides.yamato.core.models.news.NewsList
 - 記事一覧をarticleタグ内に出力する
 
 ```html
@@ -531,12 +532,15 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 
 |#|内容|意味|HTLでの呼び出し方|
 |:-|:-|:-|:-|
-|①|日付フォーマット|記事の日付の表示形式|yyyy.MM.dd|
-|②|記事日付|記事の日付(cq:lastModifiedプロパティ)|date|
-|③|記事のカテゴリ(内部)|CSSクラスに用いるためのカテゴリ|category|
-|④|記事のカテゴリ(外部)|表示に使うためのカテゴリ|categoryDisplayName|
-|⑤|記事のパス|該当の記事ページのリンク先|path|
-|⑥|タイトル|記事のタイトル(jcr:titleプロパティ)|title|
+|①|ループ開始インデックス|記事を10件で区切って出力するための始点|begin|
+|②|ループ終了インデックス|記事を10件で区切って出力するための終点|end|
+|③|日付フォーマット|記事の日付の表示形式|yyyy.MM.dd|
+|④|記事日付|記事の日付(cq:lastModifiedプロパティ)|date|
+|⑤|記事のカテゴリ(内部)|CSSクラスに用いるためのカテゴリ|category|
+|⑥|記事のカテゴリ(外部)|表示に使うためのカテゴリ|categoryDisplayName|
+|⑦|記事のパス|該当の記事ページのリンク先|path|
+|⑧|タイトル|記事のタイトル(jcr:titleプロパティ)|title|
+
 
 #### ページャ
 - Javaクラス: com.adobe.aem.guides.yamato.core.models.news.pager.Pager
