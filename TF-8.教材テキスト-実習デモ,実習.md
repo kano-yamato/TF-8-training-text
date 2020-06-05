@@ -352,10 +352,7 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 ![ニュースリスト詳細](./training-newslist-detail.png)
 
 - Javaクラス
-  - ニュース一覧本体: com.adobe.aem.guides.yamato.core.models.news.NewsList
-  - カテゴリタブ: com.adobe.aem.guides.yamato.core.models.news.NewsCategoryTab
-  - ページャ: com.adobe.aem.guides.yamato.core.models.news.pager.Pager
-    - HTLでの呼び出し時に `articlesSize=newsList.articlePages.size` を引数で渡す
+  - ニュースリスト本体: com.adobe.aem.guides.yamato.core.models.news.NewsList
 
 #### 全体のHTML
 
@@ -457,6 +454,8 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 ```
 
 #### カテゴリタブ
+- Javaクラス: com.adobe.aem.guides.yamato.core.models.news.NewsCategoryTab
+
 - 各カテゴリへのリンク
 - タブのように表示しているが、実際は各カテゴリページへのリンク
 - 現在表示しているカテゴリはaタグではなくspanタグとなり、 `is-current` クラスが付与される
@@ -519,30 +518,52 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
 |⑥|タイトル|記事のタイトル(jcr:titleプロパティ)|title|
 
 #### ページャ
+- Javaクラス: com.adobe.aem.guides.yamato.core.models.news.pager.Pager
+  - HTLでの呼び出し時に `articlesSize=newsList.articlePages.size` を引数で渡す
+
 - 合計ページ数の計算や、現在ページ数の判定などは全てJava側で行われるので、HTL側では以下の3点のみについて考慮すればよい
   - PREVボタン
   - ページャリンク
   - NEXTボタン
+- また、上記の3つを表すオブジェクトはPagerクラスから取得が可能
+- 現在のページが1ページ目の場合、PREVボタンは表示しない
+- 現在のページが最終ページの場合、NEXTボタンは表示しない
+  - PREV,NEXT共に条件の判定をJava側で行っているため、表示するかしないかを保存した変数を使うだけでよい
 
 ```html
 <div class='wp-pagenavi' role='navigation'>
+    <!-- PREVボタン -->
     <a class="previouspostslink" rel="prev" href="https://www.yamato-ltd.com/news/">PREV</a>
+    <!-- ページャリンク -->
     <a class="page larger" title="Page 1" href="https://www.yamato-ltd.com/news/">1</a>
     <span aria-current="page" class="current">2</span>
     <a class="page larger" title="Page 3" href="https://www.yamato-ltd.com/news/page/3/">3</a>
     <a class="page larger" title="Page 4" href="https://www.yamato-ltd.com/news/page/4/">4</a>
     <a class="page larger" title="Page 5" href="https://www.yamato-ltd.com/news/page/5/">5</a>
+    <!-- NEXTボタン -->
     <a class="nextpostslink" rel="next" href="https://www.yamato-ltd.com/news/page/2/">NEXT</a>
 </div>
 ```
 
+##### PREVボタン
 |#|内容|意味|HTLでの呼び出し方|
 |:-|:-|:-|:-|
-|①|(表示はされない)|PREV(前ページへのリンク)を表示するかしないか|hasPrev|
-|②|ページャリンクのリスト|各ページャオブジェクトを格納したリスト|pagerLinks|
-|③|各ページャのリンク先|○ページ目へ飛ぶリンク先|path|
-|④|現在位置の場合に付与されるクラス||currentClass|
-|⑤|タグ|現在位置の場合はリンク先を設定しないのでspan、それ以外はaタグにする|tag|
-|⑥|その他の属性|属性の名前をkey、値をvalueとしたMap|attribute|
+|①| PREVボタンそのもの ||preview|
+|②| PREVボタンを表示するかしないか ||preview.exists|
+|③|前ページへのリンク先|前ページへ遷移するためののパス|preview.path|
 
+##### ページャリンク
+|#|内容|意味|HTLでの呼び出し方|
+|:-|:-|:-|:-|
+|①| ページャリンクのリスト |各ページャオブジェクトを格納したリスト|pagerLinks|
+|②| 現在位置のページ番号に付与されるクラス ||currentClass|
+|③| タグ | 現在位置にはリンク先を設定しないのでspanタグ、それ以外はaタグとする | tag |
+|④| その他の属性 | 属性の名前をkey、値をvalueとしたMap | attribute|
+
+##### NEXTボタン
+|#|内容|意味|HTLでの呼び出し方|
+|:-|:-|:-|:-|
+|①| NEXTボタンそのもの ||next|
+|②| NEXTボタンを表示するかしないか ||next.exists|
+|③|次ページへのリンク先|前ページへ遷移するためのパス|next.path|
 
