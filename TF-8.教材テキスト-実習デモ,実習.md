@@ -65,6 +65,8 @@
 <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
 ```
 
+***
+
 ### 実習デモ - フォームテキストコンポーネント
 #### 画面概要
 ![最新ニュース](./training-demo-formtext.png)
@@ -111,6 +113,8 @@
     </div>
 </div>
 ```
+
+***
 
 ## 実習
 以下の3つのコンポーネントのHTL部分を実習として作成していただきます。
@@ -226,6 +230,8 @@
 </div>
 ```
 
+***
+
 ## 実習 - フォームオプションコンポーネント
 ### フォームオプションとは
 - 問い合わせ画面で選択可能な入力欄
@@ -324,6 +330,8 @@ Javaクラス: com.adobe.aem.guides.yamato.core.models.form.Option
   </div>
 </div>
 ```
+
+***
 
 ## 実習 - ニュースリストコンポーネント
 ### ニュースリストとは
