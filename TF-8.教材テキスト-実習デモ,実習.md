@@ -65,6 +65,27 @@
 <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
 ```
 
+#### 補足説明
+上記に挙げたHTLコードの一部を抜粋した以下のコードについて
+
+```html
+<div data-sly-use.newsList="${ 'com.adobe.aem.guides.yamato.core.models.news.NewsList' }"
+    data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.hasContent="${ !newsList.empty }">
+    <!-- 中略 -->
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
+```
+
+- `data-sly-use.newsList="${ 'com.adobe.aem.guides.yamato.core.models.news.NewsList' }"`
+  - Javaクラスを呼び出すためのHTLコードです
+- `data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"`
+  - コンポーネントのプレースホルダであるHTMLを呼び出すためのコードです
+    - このプレースホルダがあることによって、コンポーネントの中身を出力しない時にダイアログを開くための領域を確保することができます
+- `data-sly-test.hasContent="${ !newsList.empty }">`
+  - コンポーネントの中身を出力するかどうかを判断するためのコードです
+- `<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>`
+  - コンポーネントの中身を出力しない時に、2つ目で呼び出したプレースホルダを出力するためのコードです
+
 ***
 
 ### 実習デモ - フォームテキストコンポーネント
